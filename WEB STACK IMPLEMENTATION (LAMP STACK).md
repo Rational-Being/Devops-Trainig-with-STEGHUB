@@ -344,9 +344,6 @@ Create a new PHP file:
        <h2>Project Completed for my growth and steghub training</h2>
    </body>
 </html>
-
    ```
-
-3. Save and close the file.
 
 ![complete](https://github.com/user-attachments/assets/8d6a94e4-f1cc-43d4-8ae1-5649ed44e5e3)
