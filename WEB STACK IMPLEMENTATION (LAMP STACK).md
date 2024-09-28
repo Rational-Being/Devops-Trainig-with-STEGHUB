@@ -78,8 +78,8 @@ Since I'll be using SSH to manage my VPS, I ensured the firewall allows SSH conn
    ```
    sudo ufw status
    ```
+![fire](https://github.com/user-attachments/assets/80491d71-9943-4707-a465-b46f5b3a2ef0)
 
-![[fire.png]]
 Now my VPS is secured with SSH key-based authentication and has a firewall in place.
 
 ---
@@ -140,10 +140,11 @@ Verify that Apache is running and enabled to start on boot:
      ```
      sudo systemctl enable apache2
      ```
-   
-![[apap.png]]
+   ![apap](https://github.com/user-attachments/assets/8d887005-e42d-40b9-94f5-cc8c5f4072e0)
 
-![[info.png
+
+![info](https://github.com/user-attachments/assets/1004f15f-dd2d-465b-9083-957b8bf8ceee)
+
 ### **Step 3: Install MySQL Database**
 
 ####  Installing MySQL Server
@@ -182,7 +183,8 @@ To enhance the security of the MySQL server, run the MySQL secure installation s
    - Remove the test database and access to it.
    - Reload privilege tables.
 
-![[sql.png]]
+![sql](https://github.com/user-attachments/assets/3b4d433a-8e49-4650-8d4b-f5d5752a2a21)
+
 
 ##### To ensure the new user and database were created successfully:
 
@@ -190,11 +192,12 @@ To enhance the security of the MySQL server, run the MySQL secure installation s
    ```
    sudo mysql -p
    ```
-![[mysql.png]]
+
 2. List the databases to verify the user has access to the correct database:
    ```sql
    SHOW DATABASES;
    ```
+![mysql](https://github.com/user-attachments/assets/82a62132-44dc-4246-bb45-fd5557392467)
 
 
 ### **Step 4: Install PHP**
@@ -229,7 +232,8 @@ PHP extensions add extra functionality to your PHP environment. Here are some co
 - **php-curl**: Allows you to send HTTP requests.
 - **php-zip**: Provides zip file handling.
 
-![[ppp.png]]
+![ppp](https://github.com/user-attachments/assets/3c5e86c5-53fd-41b1-b2fe-f3055a252373)
+
 
 
 
@@ -313,7 +317,8 @@ Create a new PHP file:
 
 3. Save and close the file.
 
-![[ppin.png]]
+![ppin](https://github.com/user-attachments/assets/5f606c3d-086b-4d93-ba5e-1ff129d90bed)
+
 
 
 ## Alternatively:
@@ -325,7 +330,7 @@ Create a new PHP file:
    ```
 
 2. Add the following code:
-   ```php
+   ```html
    <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -344,4 +349,4 @@ Create a new PHP file:
 
 3. Save and close the file.
 
-![[complete.png]]
+![complete](https://github.com/user-attachments/assets/8d6a94e4-f1cc-43d4-8ae1-5649ed44e5e3)
