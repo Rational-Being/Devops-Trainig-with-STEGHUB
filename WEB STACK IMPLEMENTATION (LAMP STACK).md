@@ -330,7 +330,8 @@ Create a new PHP file:
    ```
 
 2. Add the following code:
-   ![code](https://github.com/user-attachments/assets/33b1d65d-0ad0-4bcb-95e8-c6cea891d035)
+   ![index](https://github.com/user-attachments/assets/cd6d6f6d-598f-4930-a816-12367bc56fae)
+
 
 
 ![complete](https://github.com/user-attachments/assets/8d6a94e4-f1cc-43d4-8ae1-5649ed44e5e3)
