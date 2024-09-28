@@ -330,20 +330,7 @@ Create a new PHP file:
    ```
 
 2. Add the following code:
-   ```html
-   <!DOCTYPE html>
-<html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Test Page</title>
-   </head>
-   <body>
-       <h1>Hello LAMP project from hostname</h1>
-       <p>Thank you, I Just finished setting up my LAMP WEB STACK</p>
-       <h2>Project Completed for my growth and steghub training</h2>
-   </body>
-</html>
-   ```
+   ![code](https://github.com/user-attachments/assets/33b1d65d-0ad0-4bcb-95e8-c6cea891d035)
+
 
 ![complete](https://github.com/user-attachments/assets/8d6a94e4-f1cc-43d4-8ae1-5649ed44e5e3)
