@@ -360,3 +360,66 @@ Create a new PHP file:
 ![lemp](https://github.com/user-attachments/assets/ac78ae7e-551c-491f-bc76-301c1e126842)
 
    
+
+##Step 6: Retrieving data from MySQL database with PHP
+
+###We will continue form step 3 above
+
+After establishing connection to the database with sudo mysql
+
+#### Create a new database:
+
+```
+mysql> CREATE DATABASE LEMP;
+```
+#### Create a new user and grant priveledges
+
+```
+mysql>  CREATE USER 'alpha'@'%' IDENTIFIED WITH mysql_native_password BY 'Very_STRONG_PASsword';
+```
+
+```
+mysql> GRANT ALL ON LEMP.* TO 'alpha'@'%';
+
+
+finally Exit
+
+```
+mysql> exit
+```
+
+##Then, follow te following steps to use the database, create tabels and fill in the table
+
+
+
+# Test the database connection with the LEMP stack
+
+<?php
+$user = "example_user";
+$password = "PassWord.1";
+$database = "example_database";
+$table = "todo_list";
+
+try {
+  $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+  echo "<h2>TODO</h2><ol>";
+  foreach($db->query("SELECT content FROM $table") as $row) {
+      echo "<li>" . $row['content'] . "</li>";
+    }
+       echo "</ol>";
+      } catch (PDOException $e) {
+          print "Error!: " . $e->getMessage() . "<br/>";
+          die();
+    }
+
+Save and close the file when you are done editing
+
+
+
+Access this page in your web browser by visiting the domain name or public IP address configured for your website, followed by /todo_list.php:
+
+http://<Public_domain_or_IP>/todo_list.php
+
+You should see a page like this, showing the content you’ve inserted in your test table:
+
+
