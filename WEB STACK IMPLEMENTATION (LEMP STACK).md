@@ -264,7 +264,7 @@ PHP is a popular server-side scripting language used for web development. To run
    sudo chown -R [username]:[username] /var/www/projectlemp
    ```
 
-##### **3.4.2 Set Directory Permissions**
+##### ** Set Directory Permissions**
 To ensure Apache can read the files properly, set the following permissions:
 
 1. Set directory permissions:
@@ -377,18 +377,24 @@ mysql> CREATE DATABASE LEMP;
 ```
 mysql>  CREATE USER 'alpha'@'%' IDENTIFIED WITH mysql_native_password BY 'Very_STRONG_PASsword';
 ```
-
 ```
 mysql> GRANT ALL ON LEMP.* TO 'alpha'@'%';
 
+```
 
-finally Exit
+**finally Exit**
+
 
 ```
 mysql> exit
 ```
 
 ##Then, follow te following steps to use the database, create tabels and fill in the table
+
+![maria](https://github.com/user-attachments/assets/28921346-fbcf-4df2-a491-7310b0e55aef)
+
+
+![maria create ](https://github.com/user-attachments/assets/eae9251f-1065-4601-830c-d515c4964088)
 
 
 
@@ -421,5 +427,6 @@ Access this page in your web browser by visiting the domain name or public IP ad
 http://<Public_domain_or_IP>/todo_list.php
 
 You should see a page like this, showing the content you’ve inserted in your test table:
+![todo](https://github.com/user-attachments/assets/0ff192c4-9554-45bf-805c-25ea0f860095)
 
 
