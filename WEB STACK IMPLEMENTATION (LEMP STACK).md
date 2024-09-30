@@ -174,10 +174,9 @@ Verify that nginx is running and enabled to start on boot:
      ```
      sudo systemctl enable nginx
      ```
-   ![apap](https://github.com/user-attachments/assets/8d887005-e42d-40b9-94f5-cc8c5f4072e0)
+  ![nginx status](https://github.com/user-attachments/assets/da7203fe-ce99-4fd1-a08f-7aa7cd1f1d5e)
 
-
-![info](https://github.com/user-attachments/assets/1004f15f-dd2d-465b-9083-957b8bf8ceee)
+![nginx info](https://github.com/user-attachments/assets/5ca2d4d3-f901-4cf3-b7af-adf9bfbf9f18)
 
 ### **Step 3: Install MySQL Database**
 
@@ -251,16 +250,6 @@ PHP is a popular server-side scripting language used for web development. To run
      sudo systemctl restart Nginx
      ```
    
-- **php-mysql**: Enables PHP to communicate with MySQL databases.
-- **php-xml**: Provides XML parsing functionality.
-- **php-gd**: Used for image manipulation.
-- **php-curl**: Allows you to send HTTP requests.
-- **php-zip**: Provides zip file handling.
-
-![ppp](https://github.com/user-attachments/assets/3c5e86c5-53fd-41b1-b2fe-f3055a252373)
-
-
-
 
 ## Step 5: Configuring Nginx to Use PHP Processor
 
@@ -347,7 +336,7 @@ To test the LEMP stack setup, create a PHP file that displays information about 
 
 Create a new PHP file:
    ```
-   sudo vim /var/www/projectlamp/index.php
+   sudo vim /var/www/projectLEMP/index.php
    ```
 
 2. Add the following code:
@@ -357,7 +346,6 @@ Create a new PHP file:
 
 3. Save and close the file.
 
-![ppin](https://github.com/user-attachments/assets/5f606c3d-086b-4d93-ba5e-1ff129d90bed)
 
 
 
@@ -366,12 +354,9 @@ Create a new PHP file:
 
 1. Create a new PHP file:
    ```
-   sudo vim /var/www/projectlamp/index.html
+   sudo vim /var/www/projectLEMP/lemp.html
    ```
 
-2. Add the following code:
-   ![index](https://github.com/user-attachments/assets/cd6d6f6d-598f-4930-a816-12367bc56fae)
+![lemp](https://github.com/user-attachments/assets/ac78ae7e-551c-491f-bc76-301c1e126842)
 
-
-
-![complete](https://github.com/user-attachments/assets/8d6a94e4-f1cc-43d4-8ae1-5649ed44e5e3)
+   
