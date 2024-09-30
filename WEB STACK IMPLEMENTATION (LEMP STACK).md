@@ -389,7 +389,7 @@ mysql> GRANT ALL ON LEMP.* TO 'alpha'@'%';
 mysql> exit
 ```
 
-##Then, follow te following steps to use the database, create tabels and fill in the table
+## Then, follow te following steps to use the database, create tabels and fill in the table
 
 ![maria](https://github.com/user-attachments/assets/28921346-fbcf-4df2-a491-7310b0e55aef)
 
@@ -399,7 +399,7 @@ mysql> exit
 
 
 # Test the database connection with the LEMP stack
-
+```
 <?php
 $user = "example_user";
 $password = "PassWord.1";
@@ -417,16 +417,16 @@ try {
           print "Error!: " . $e->getMessage() . "<br/>";
           die();
     }
-
+```
 Save and close the file when you are done editing
 
 
 
 Access this page in your web browser by visiting the domain name or public IP address configured for your website, followed by /todo_list.php:
 
-http://<Public_domain_or_IP>/todo_list.php
 
 You should see a page like this, showing the content you’ve inserted in your test table:
+
 ![todo](https://github.com/user-attachments/assets/0ff192c4-9554-45bf-805c-25ea0f860095)
 
 
