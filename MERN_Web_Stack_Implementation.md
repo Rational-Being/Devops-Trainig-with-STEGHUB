@@ -271,13 +271,13 @@ console.log(`Server running on port ${port}`)
 });
 ```
 
-###Finally, Start your server
+### Finally, Start your server
 ```
 node index.js
 ```
 
 
-##Testing Backend Code without Frontend using POSTMAN 
+## Testing Backend Code without Frontend using POSTMAN 
 
 Make the following request, with the default postman configuration:
 
@@ -402,12 +402,12 @@ cd src/components
 ```bash
 vi ListTodo.js
 ```
-- **Opens `ListTodo.js` in `vi`, a React component that probably lists todo items.**
+- **Opens `ListTodo.js` in `vi`, a React component that lists todo items.**
 
 ```bash
 vi Todo.js
 ```
-- **Opens `Todo.js` in `vi`, which likely represents the structure of individual todo items.**
+- **Opens `Todo.js` in `vi`, which represents the structure of individual todo items.**
 
 ```bash
 cd ..
@@ -472,7 +472,7 @@ cd ../..
 ```bash
 npm run dev
 ```
-- **Runs the React development server, typically using a script defined in `package.json`.**
+- **Runs the React development server, using a script defined in `package.json`.**
 
 ```bash
 cd client/src/components
