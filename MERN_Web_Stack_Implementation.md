@@ -52,22 +52,23 @@ MERN is an ideal choice for building single-page applications (SPAs), social med
    ```bash
    npm init -y
    ```
-
+![init](https://github.com/user-attachments/assets/b52e55ef-b6a6-46bf-ba75-20639a8c24a7)
 
 
 2. **Install Express.js and other dependencies**:
    ```bash
    npm install express mongoose dotenv
    ```
+![Uploading 2 express.png…]()
 
 3. **Create Server File**:
    - Create `index.js` to define routes and middleware
    ```
    vim index.js
-  ```
+   ```
 
    Type the following code into the file:
-   ```
+```
 const express = require('express');
 require('dotenv').config();
 
@@ -95,10 +96,15 @@ console.log(`Server running on port ${port}`)
 node index.js
 ```
 
+![3  express start](https://github.com/user-attachments/assets/075cf2d1-2ef2-48c9-9b84-1f1fd2ac0948)
+
 **Making sure no other service is running on port 5000 then visit the following endpoint**
 ```
 http://<PublicIP-or-PublicDNS>:5000
 ```
+
+![4 welcome to express](https://github.com/user-attachments/assets/5d2217ca-75c1-45c2-81c9-a007ca018c08)
+
 
 ##**Define API Endpoints**:
 Now, let's define the routes for GET, POST, PUT, and DELETE operations. These routes will interact with a MongoDB collection through a Mongoose model.
@@ -275,12 +281,17 @@ node index.js
 
 Make the following request, with the default postman configuration:
 
+**POST api/todos**
 
+![5 Post api todo](https://github.com/user-attachments/assets/223d35b5-b40a-4019-97c8-0c0a276a825f)
 
+**GET api/todos**
 
+![6 Get api todo](https://github.com/user-attachments/assets/f2dc0111-9097-49ad-aaf4-779a993b957f)
 
+**DELETE api/todos**
 
-
+![7 delete api todo](https://github.com/user-attachments/assets/6641e603-48c3-453c-9b3d-54d52b4031dd)
 
 ### **Setting Up the Frontend (React)**
 1. **Create React App**:
@@ -335,6 +346,10 @@ Run your app
 ```
 npm run dev
 ```
+
+![8 React app](https://github.com/user-attachments/assets/23d18415-f7ca-4446-b3ef-57a5ed93b61c)
+
+
 
 
 ## **React Components**:
@@ -481,3 +496,6 @@ mv input.js Input.js
 
 
 **Finally, Success**
+
+![9 done](https://github.com/user-attachments/assets/8cb0c864-18fb-4e35-a61d-3056d603af8a)
+
