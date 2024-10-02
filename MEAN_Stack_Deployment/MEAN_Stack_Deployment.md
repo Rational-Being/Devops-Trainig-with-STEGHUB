@@ -1,4 +1,4 @@
-### **Deploying a MEAN Stack on Localhost**
+![03 node server](https://github.com/user-attachments/assets/1367fe32-336c-4c1a-8869-b90432dcba02)### **Deploying a MEAN Stack on VPS**
 
 ---
 
@@ -140,6 +140,8 @@ In the Books directory, Initialize npm project
 ```
       npm init
 ```
+![01 npm init](https://github.com/user-attachments/assets/02536326-84f1-4ba1-ad0d-651731394764)
+
 
 Add a file to it named server.js
 
@@ -181,16 +183,20 @@ Express is a minimal and flexible Node.js web application framework that provide
 
 We also will use Mongoose package which provides a straight-forward, schema-based solution to model your application data. We will use Mongoose to establish a schema for the database to store data of our book register.
 
+```
 sudo npm install express mongoose
+```
+![02 express mongoose](https://github.com/user-attachments/assets/773d9588-b40a-4825-a18d-affe362c73bc)
+
 
 In 'Books' folder, create a folder named apps
-
+```
 mkdir apps && cd apps
-
+```
 Create a file named routes.js
-
+```
 vi routes.js
-
+```
 Copy and paste the code below into routes.js
 
 ```
@@ -421,6 +427,9 @@ Start the server by running this command:
 ```
 node server.js
 ```
+
+![03 node server](https://github.com/user-attachments/assets/1be6ea8a-3b57-4810-9eb4-51f032b65376)
+
 The server is now up and running, we can connect it via port 3300. You can launch a separate Putty or SSH console to test what curl command returns locally.
 ```
 curl -s http://localhost:3300
@@ -429,6 +438,7 @@ It shall return an HTML page, it is hardly readable in the CLI, but we can also 
 
 For this - you need to open TCP port 3300 on your VPS
 
+![4 welcome to express](https://github.com/user-attachments/assets/28eb1a8d-15c0-409c-b15c-0bef310a8bc4)
 
 
 
