@@ -9,6 +9,7 @@ I spent some time reading up on **ping** and **traceroute**, two essential netwo
     ```bash
     ping <destination>
     ```
+![ping](https://github.com/user-attachments/assets/c1207e01-dab5-403a-ae4b-f4cd54da68d9)
 
     From the results, I can now easily interpret:
     
@@ -21,6 +22,7 @@ I spent some time reading up on **ping** and **traceroute**, two essential netwo
     ```bash
     traceroute <destination>
     ```
+    ![traceroutes](https://github.com/user-attachments/assets/a1168a89-55f4-42d8-8e8c-cd5051ef3d87)
 
     Key takeaways from the traceroute output:
     
