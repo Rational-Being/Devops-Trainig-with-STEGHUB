@@ -1,4 +1,4 @@
-![03 node server](https://github.com/user-attachments/assets/1367fe32-336c-4c1a-8869-b90432dcba02)### **Deploying a MEAN Stack on VPS**
+### **Deploying a MEAN Stack on VPS**
 
 ---
 
@@ -438,11 +438,4 @@ It shall return an HTML page, it is hardly readable in the CLI, but we can also 
 
 For this - you need to open TCP port 3300 on your VPS
 
-
-![04 done](https://github.com/user-attachments/assets/4c4c01a9-8ef7-46cd-a0fe-7535fb60e2d2)
-
-
-
-
-
-
+![DONE](https://github.com/user-attachments/assets/38934420-a450-4fc0-8a4c-883a02707599)
