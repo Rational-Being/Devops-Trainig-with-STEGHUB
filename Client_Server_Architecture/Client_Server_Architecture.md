@@ -77,6 +77,7 @@ Login to the `mysql-server` machine and perform the following:
    ```bash
    sudo systemctl start mysql
    ```
+![01 mongodb status](https://github.com/user-attachments/assets/941457d4-645d-4e8a-ab3b-376fbac36ce8)
 
 ---
 
@@ -143,7 +144,35 @@ By default, MySQL only allows connections from `localhost` (i.e., from the serve
    ```sql
    FLUSH PRIVILEGES;
    ```
+![03 create user](https://github.com/user-attachments/assets/5f3c00d6-8441-4590-b284-6b6dbec5942b)
 
+   
+### **Open MySQL Port (3306) on the MySQL Server**
+
+1. **Check if UFW is Installed**:
+   If you're using **UFW (Uncomplicated Firewall)**, you can check if it’s enabled:
+   ```bash
+   sudo ufw status
+   ```
+
+2. **Allow MySQL Port**:
+   If UFW is running, you need to allow incoming connections on port 3306. Run the following command:
+   ```bash
+   sudo ufw allow 3306/tcp
+   ```
+
+3. **Enable UFW (if not enabled)**:
+   If UFW was not previously enabled, you can enable it with:
+   ```bash
+   sudo ufw enable
+   ```
+
+4. **Verify Firewall Rules**:
+   After allowing the port, verify that the rules are set correctly:
+   ```bash
+   sudo ufw status
+   ```
+   You should see a line indicating that port 3306 is allowed.
 ---
 
 ### **5. Connect Remotely from `mysql-client` to `mysql-server`**
@@ -171,7 +200,7 @@ Once connected, you should be in the MySQL prompt on `mysql-client`. You can per
    ```sql
    SHOW DATABASES;
    ```
-
+![02 connected](https://github.com/user-attachments/assets/a20b57b2-eddc-4660-acd6-80eda004fde2)
 2. **Create a test database**:
    ```sql
    CREATE DATABASE test_db;
