@@ -87,70 +87,67 @@ sudo apt install -y nodejs
 ## Step 2: Install MongoDB
 
 **In this Learning, I will use Mongodb for adding book records to MongoDB that contain book name, isbn number, author, and number of pages**
-
 ```
+
 sudo apt-get install -y gnupg curl
 curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \
    sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
       --dearmor
+
+
+
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
 ```
 
-```
-      echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
-```
-
-      Install MongoDB
+  Install MongoDB
 
 ```
       sudo apt-get install -y mongodb-org
-```
-
-      Start The server
 
 ```
-      sudo service mongodb start
+  Start The server
+
+ ```
+     sudo service mongodb start
 ```
 
-      Verify that the service is up and running
-
+  Verify that the service is up and running
 ```
       sudo systemctl status mongodb
 ```
 
-      Install [npm](https://www.npmjs.com) - Node package manager.
+Install [npm](https://www.npmjs.com) - Node package manager.
 
 ```
       sudo apt install -y npm
 ```
 
-      Install 'body-parser package
+Install 'body-parser package
 
-      We need 'body-parser' package to help us process JSON files passed in requests to the server.
-
+We need 'body-parser' package to help us process JSON files passed in requests to the server.
 ```
       sudo npm install body-parser
 ```
 
-      Create a folder named 'Books'
+  Create a folder named 'Books'
 
 ```
       mkdir Books && cd Books
 ```
 
-      In the Books directory, Initialize npm project
+In the Books directory, Initialize npm project
 
 ```
       npm init
 ```
 
-      Add a file to it named server.js
+Add a file to it named server.js
 
 ```
       vi server.js
 ```
 
-      Copy and paste the web server code below into the server.js file.
-
+Copy and paste the web server code below into the server.js file.
 ```
       const express = require('express');
       const bodyParser = require('body-parser');
@@ -176,8 +173,8 @@ curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \
           app.listen(PORT, () => {
             console.log(`Server up: http://localhost:${PORT}`);
             });
-```
 
+```
 ### Step 3: Install Express and set up routes to the server
 
 Express is a minimal and flexible Node.js web application framework that provides features for web and mobile applications. We will use Express in to pass book information to and from our MongoDB database.
@@ -252,15 +249,15 @@ module.exports = function(app) {
 
 
 In the 'apps' folder, create a folder named models
-
+```
 mkdir models && cd models
-
+```
 Create a file named book.js
-
+```
 vi book.js
-
+```
 Copy and paste the code below into 'book.js'
-
+```
 const mongoose = require('mongoose');
 
 const bookSchema = new mongoose.Schema({
@@ -273,7 +270,7 @@ const bookSchema = new mongoose.Schema({
           });
 
   module.exports = mongoose.model('Book', bookSchema);
-
+```
 
 
 
