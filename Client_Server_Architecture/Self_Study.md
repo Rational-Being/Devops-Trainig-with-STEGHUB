@@ -1,4 +1,4 @@
-i### **Self-Study Notes**
+### **Self-Study Notes**
 
 #### **1. Ping and Traceroute: Network Diagnostic Utilities**
 
