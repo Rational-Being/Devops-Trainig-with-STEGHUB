@@ -13,6 +13,8 @@ Install wget, Apache and it's dependencies
 ```
 sudo yum -y install wget httpd php php-mysqlnd php-fpm php-json
 ```
+![insall packaes](https://github.com/user-attachments/assets/e1bc1b01-a7bd-4c15-9af1-25c451551ca8)
+
 Start Apache
 ```
 sudo systemctl enable httpd 
@@ -42,9 +44,13 @@ cd wordpress
 ```
 sudo wget http://wordpress.org/latest.tar.gz
 ```
+![mkdir wordpress](https://github.com/user-attachments/assets/0b2fc207-8dc3-4d7c-9c18-b6ef55099c88)
+
 ```
 sudo tar -xzvf latest.tar.gz
 ```
+![latest tar](https://github.com/user-attachments/assets/43dcdbc0-df34-472e-8269-58dfdbd17e00)
+
 ```
 sudo rm -rf latest.tar.gz
 ```
@@ -65,8 +71,7 @@ sudo chcon -t httpd_sys_rw_content_t /var/www/html/wordpress -R
 sudo setsebool -P httpd_can_network_connect=1
 ```
 
-Step 4 â
-install MySQL on your DB Server EC2
+## Step 2: Install MySQL on your DB Server EC2
 
 ```
 sudo yum update
@@ -84,8 +89,7 @@ sudo systemctl enable mysqld
 ```
 
 
-Step 5 â
-onfigure DB to work with WordPress
+## Step 3: Configure DB to work with WordPress
 
 ```
 sudo mysql
@@ -97,7 +101,9 @@ SHOW DATABASES;
 exit
 ```
 
-Step 6: Configure WordPress to connect to remote database.
+![sow db](https://github.com/user-attachments/assets/a42234b5-4c0b-4f46-b8d7-e178d6183963)
+
+## Step 4: Configure WordPress to connect to remote database.
 
 Hint: Do not forget to open MySQL port 3306 on DB Server EC2. For extra security, you shall allow access to the DB server ONLY from your Web Server's IP address, so in the Inbound Rule configuration specify source as /32
 
@@ -113,6 +119,13 @@ Change permissions and configuration so Apache could use WordPress:
 Enable TCP port 80 in Inbound Rules configuration for your Web Server EC2 (enable from everywhere 0.0.0.0/0 or from your workstation's IP)
 Try to access from your browser the link to your WordPress http://<Web-Server-Public-IP-Address>/wordpress/
 
+![01 wordpress install](https://github.com/user-attachments/assets/c7290773-60f2-4fb2-97f6-886f7edb6b98)
 
 
+![02 welcome](https://github.com/user-attachments/assets/6a589443-bf62-48c4-a186-a90df59b8954)
 
+
+![03 install success](https://github.com/user-attachments/assets/e820e8a5-4ba0-48fc-9b07-36dd738a58da)
+
+
+![04 done](https://github.com/user-attachments/assets/7f380bf5-cffa-4b27-8a4a-c99d7fdacdbe)
