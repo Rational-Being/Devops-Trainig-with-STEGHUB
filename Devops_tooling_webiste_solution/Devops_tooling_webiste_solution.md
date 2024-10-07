@@ -179,3 +179,61 @@ Grant permission to webaccess user on tooling database to do anything only from 
 ![grant priveiledges](https://github.com/user-attachments/assets/1b361db9-4432-4f9b-b94f-c47b02ab22f6)
 
 
+## Step 3 — Prepare the Web Servers
+
+Configure NFS client 
+```
+sudo yum install nfs-utils nfs4-acl-tools -y
+```
+Mount /var/www/ and target the NFS server's export for apps
+```
+sudo mkdir /var/www
+sudo mount -t nfs -o rw,nosuid <NFS-Server-Private-IP-Address>:/mnt/apps /var/www
+```
+Verify that NFS was mounted successfully by running df -h. Make sure that the changes will persist on Web Server after reboot:
+```
+sudo vi /etc/fstab
+```
+add following line
+```
+<NFS-Server-Private-IP-Address>:/mnt/apps /var/www nfs defaults 0 0
+```
+Install Remi's repository, Apache and PHP
+```
+sudo yum install httpd -y
+
+sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+
+sudo dnf install dnf-utils http://rpms.remirepo.net/enterprise/remi-release-8.rpm
+
+sudo dnf module reset php
+
+sudo dnf module enable php:remi-7.4
+
+sudo dnf install php php-opcache php-gd php-curl php-mysqlnd
+
+sudo systemctl start php-fpm
+
+sudo systemctl enable php-fpm
+
+setsebool -P httpd_execmem 1
+```
+Fork the tooling source code from StegHub Github Account to your Github account. https://github.com/StegTechHub/tooling.git
+
+
+### Deploy the tooling website's code to the Webserver. Ensure that the html folder from the repository is deployed to /var/www/html
+
+Update the website's configuration to connect to the database (in /var/www/html/functions.php file). Apply tooling-db.sql script to your database using this command mysql -h <databse-private-ip> -u <db-username> -p <db-pasword> < tooling-db.sql
+    Create in MySQL a new admin user with username: myuser and password: password:
+
+INSERT INTO 'users' ('id', 'username', 'password', 'email', 'user_type', 'status') VALUES -> (1, 'myuser', '5f4dcc3b5aa765d61d8327deb882cf99', 'user@mail.com', 'admin', '1');
+
+Open the website in your browser http://<Web-Server-Public-IP-Address-or-Public-DNS-Name>/index.php and make sure you can login into the websute with myuser user.
+
+![001 Stegub login](https://github.com/user-attachments/assets/b6f98f44-d145-410d-afcf-d90d11965a2c)
+
+
+![002 register](https://github.com/user-attachments/assets/1d223be4-c40a-4c51-8cc9-fc2b8a5d98f2)
+
+
+![003 admin page](https://github.com/user-attachments/assets/96ca2d50-6d12-46c8-a98f-03e210ee5843)
