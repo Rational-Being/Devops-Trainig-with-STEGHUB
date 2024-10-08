@@ -28,8 +28,11 @@ To configure Nginx as a load balancer, create a new Nginx configuration file:
 
 1. Create a new file in the `/etc/nginx/conf.d/` directory:
    ```bash
-   sudo nano /etc/nginx/conf.d/load_balancer.conf
+   sudo vim /etc/nginx/conf.d/load_balancer.conf
    ```
+![01 vim](https://github.com/user-attachments/assets/08ea5b0d-0141-4364-96b9-fa9e95ffde29)
+
+
 2. Add the following configuration:
    ```nginx
      upstream myproject {
@@ -49,20 +52,19 @@ To configure Nginx as a load balancer, create a new Nginx configuration file:
     # include /etc/nginx/sites-enabled/*;
    ```
 
+![02  vim conf](https://github.com/user-attachments/assets/51567752-f627-4ce5-b93c-c8a05e62ae61)
+
 This configuration defines an upstream group of servers (backend) and a server block and distributes incoming traffic to the upstream servers using the `proxy_pass` directive.
 
 ## Step 3: Test Nginx Load Balancer
 
 To test the Nginx load balancer, follow these steps:
 
-1. Restart Nginx:
    ```bash
-   sudo service nginx restart
+   sudo systemctl restart nginx
+   sudo systemctl status nginx  
    ```
-2. Verify that Nginx is distributing traffic to the upstream servers:
-   ```bash
-   curl http://localhost
-   ```
+![03 restart and status](https://github.com/user-attachments/assets/dc18f260-c0f1-4af7-a627-64925cae2af3)
 
 
 # Part 2: Register a New Domain Name and Configure Secured Connection using SSL/TLS Certificates
