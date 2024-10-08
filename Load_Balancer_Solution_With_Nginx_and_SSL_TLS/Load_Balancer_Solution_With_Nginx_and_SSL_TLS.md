@@ -106,7 +106,6 @@ Update your Nginx configuration to recognize your domain, securing the website w
    sudo systemctl reload nginx
    ```
 
----
 
 ## Step 2: Install Certbot and Request an SSL/TLS Certificate
 
@@ -145,22 +144,18 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
 3. Once the process is complete, Certbot will configure Nginx to use the issued certificate and reload the service.
 
----
 
 ## Step 3: Test Secured Access to Your Website
 
 After obtaining the SSL/TLS certificate, test access to your website over HTTPS:
 
-1. Open your browser and visit:
+Open your browser and visit:
    ```bash
    https://<your-domain-name.com>
    ```
 
-2. You should see a **padlock** icon in the browser’s address bar, indicating that the connection is secured with SSL/TLS.
+![07 https](https://github.com/user-attachments/assets/1eabd765-377b-42d2-a6e7-7b2522327f8e)
 
-3. Click on the padlock to view details about the certificate issued to your site, including the issuer (Let's Encrypt) and expiration date.
-
----
 
 ## Step 4: Set Up Automatic SSL/TLS Certificate Renewal
 
