@@ -77,22 +77,13 @@ In this project, the primary goal is to automate the deployment of a tooling web
 ![08 installing](https://github.com/user-attachments/assets/a1e3cb3e-9496-4fd4-a194-2ab7ed96f467)
 
 
-#### **Configure Jenkins:**
+6. **Set up an Admin User and Initial Configuration:**
+     Follow the prompts on the web interface to create an admin user. Choose a username, password, and email for the admin account.
 
-   1. **Set up an Admin User and Initial Configuration:**
-      - Follow the prompts on the web interface to create an admin user. Choose a username, password, and email for the admin account.
-      - Jenkins will ask if you want to install suggested plugins or select specific ones. Choose "Install suggested plugins" to install commonly used plugins.
 
-   2. **Install Necessary Plugins:**
-      After the initial setup, you can install additional plugins to enhance your CI/CD pipeline.
-      
-      - **Git Plugin:** This allows Jenkins to integrate with GitHub and other Git repositories.
-      - **PHP Plugin:** Useful for PHP-specific build tasks and linting.
-      - **Build Pipeline Plugin:** Helps you visualize the pipeline stages of your project.
-      - **Other Plugins:** Consider plugins for automated testing, code analysis (e.g., Checkstyle), and notifications (e.g., Slack).
 
-      To install plugins:
-      - Navigate to `Manage Jenkins` > `Manage Plugins` > `Available`.
-      - Search for the desired plugin and click `Install without restart`.
 
-After completing these steps, Jenkins is ready to automate your CI/CD pipeline for the tooling website project.
+
+
+
+     
