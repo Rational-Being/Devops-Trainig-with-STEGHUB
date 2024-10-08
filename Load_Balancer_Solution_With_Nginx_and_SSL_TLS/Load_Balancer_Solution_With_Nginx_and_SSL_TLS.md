@@ -154,7 +154,7 @@ Open your browser and visit:
    https://<your-domain-name.com>
    ```
 
-![07 https](https://github.com/user-attachments/assets/1eabd765-377b-42d2-a6e7-7b2522327f8e)
+![07 https](https://github.com/user-attachments/assets/bde2269c-e73a-4092-b461-6a2c1f3e1c49)
 
 
 ## Step 4: Set Up Automatic SSL/TLS Certificate Renewal
