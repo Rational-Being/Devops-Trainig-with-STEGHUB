@@ -112,6 +112,8 @@ In this project, the primary goal is to automate the deployment of a tooling web
 
 3. To verify the build status, click on **Build #1** and navigate to the **"Console Output"**. If the output shows no errors and the build completed as expected, congratulations! You have successfully run your very first Jenkins build.
 
+
+
 ### Enhancing the Build: Automation and Artifacts
 
 #### **Configure GitHub Webhook for Automatic Trigger:**
@@ -132,6 +134,8 @@ In this project, the primary goal is to automate the deployment of a tooling web
    - Jenkins will detect the push through the webhook and automatically trigger a new build.
    - You can observe the build status and check the **"Artifacts"** generated under the build's details.
 
+
+
 ### Continuous Integration Flow
 
 At this point, you've successfully configured an automated Jenkins job that listens for GitHub webhook triggers. Each time you push changes to the repository, a new build will be initiated. The process is seamless and reduces manual intervention.
@@ -147,6 +151,8 @@ ls /var/lib/jenkins/jobs/tooling_github/builds/<build_number>/archive/
 ```
 
 This directory contains all archived files from your builds, allowing you to retrieve or inspect them as needed.
+
+
 
 
 ### Configure Jenkins to Copy Files to NFS Server via SSH
@@ -182,7 +188,7 @@ Jenkins is a highly extendable application and there are 1400+ plugins available
 
    - Save this configuration and go ahead, change something in the `README.MD` file in your GitHub Tooling repository.
      
-         ![10 edit readme](https://github.com/user-attachments/assets/5e31c203-2d2b-45da-9d4b-8d5995064427)
+      ![10 edit readme](https://github.com/user-attachments/assets/5e31c203-2d2b-45da-9d4b-8d5995064427)
 
    - The webhook will trigger a new job, and in the **"Console Output"** of the job, you will see something like this:
    
