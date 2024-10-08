@@ -105,12 +105,55 @@ In this project, the primary goal is to automate the deployment of a tooling web
   ![09 add git repo](https://github.com/user-attachments/assets/557832f8-56c0-4e3b-8623-1fd67c888d88)
 
 
-   4. **Test the Webhook:**
-      - Make a change to the repository (e.g., update a file and push it to GitHub).
+### Save and Run the Build
+
+1. After configuring your Jenkins job, **Save** the settings.
+2. To trigger the first build, click on the **"Build Now"** button. If everything is configured correctly, the build will start successfully, and you’ll see it appear as **Build #1** at the bottom of the Jenkins dashboard.
+
+3. To verify the build status, click on **Build #1** and navigate to the **"Console Output"**. If the output shows no errors and the build completed as expected, congratulations! You have successfully run your very first Jenkins build.
+
+### Enhancing the Build: Automation and Artifacts
+
+#### **Configure GitHub Webhook for Automatic Trigger:**
+
+   - Navigate to your Jenkins job configuration by clicking **"Configure"**.
+   - Under the **"Build Triggers"** section, enable **"GitHub hook trigger for GITScm polling"**. This ensures the job is triggered automatically whenever changes are pushed to the GitHub repository (via the webhook).
+
+#### **Configure Post-Build Actions:**
+
+   - Scroll down to the **"Post-build Actions"** section.
+   - Add a **"Post-build Action"** and select **"Archive the artifacts"**.
+   - Specify the files you want to archive. For example, if your build generates any files like logs or compiled code, you could use `**/*` to archive all files or specify certain file types like `*.php`.
+
+#### **Test the Configuration:**
+
+   - Save the updated configuration.
+   - Now, make any small change to your GitHub repository (e.g., update the `README.md` file) and push the changes to the `master` branch.
+   - Jenkins will detect the push through the webhook and automatically trigger a new build.
+   - You can observe the build status and check the **"Artifacts"** generated under the build's details.
+
+### Continuous Integration Flow
+
+At this point, you've successfully configured an automated Jenkins job that listens for GitHub webhook triggers. Each time you push changes to the repository, a new build will be initiated. The process is seamless and reduces manual intervention.
+
+- This "push" method (triggering builds via GitHub webhook) ensures changes are immediately built and tested.
+- Other triggering methods include setting up **downstream** jobs (where one job triggers another) or **polling** GitHub periodically for changes.
+
+#### Accessing Artifacts:
+By default, any artifacts you archive will be stored on the Jenkins server. You can view them locally using:
+
+```bash
+ls /var/lib/jenkins/jobs/tooling_github/builds/<build_number>/archive/
+```
+
+This directory contains all archived files from your builds, allowing you to retrieve or inspect them as needed.
+
+**Test the Webhook:**
+ - Make a change to the repository (e.g., update a file and push it to GitHub).
 
       ![10 edit readme](https://github.com/user-attachments/assets/5e31c203-2d2b-45da-9d4b-8d5995064427)
 
-      - This should trigger a build job in Jenkins, and you should see the automation process being carried out in Jenkins.
+ - This should trigger a build job in Jenkins, and you should see the automation process being carried out in Jenkins.
 
 By setting up the GitHub webhook with Jenkins, any changes made to the tooling website's code will automatically trigger Jenkins jobs for deployment or any other predefined actions, streamlining the Continuous Integration (CI) process.
 
