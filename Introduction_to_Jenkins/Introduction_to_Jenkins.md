@@ -81,7 +81,33 @@ In this project, the primary goal is to automate the deployment of a tooling web
      Follow the prompts on the web interface to create an admin user. Choose a username, password, and email for the admin account.
 
 
+### Configuring GitHub Repository for the Tooling Website
 
+#### **Set Up Webhook in GitHub:**
+
+   1. **Configure Jenkins for Webhook Integration:**
+      - First, make sure Jenkins is publicly accessible
+      - Navigate to Jenkins, and go to **Manage Jenkins** > **Manage Plugins**.
+          
+   2. **Generate a Webhook URL in Jenkins:**
+      - In Jenkins, create a new **Freestyle Project** or **Pipeline** job that will automate the deployment or any other task for the tooling website.
+      - In the job configuration, under **Source Code Management**, select "Git" and add the GitHub repository URL (https://github.com/<username>/tooling-website.git).
+      - Scroll down to **Build Triggers** and check **GitHub hook trigger for GITScm polling**.
+      - Jenkins will now generate a webhook URL for the job, which can be used in GitHub to trigger the build on any code changes.
+      
+   3. **Configure Webhook in GitHub Repository Settings:**
+      - Go to the **GitHub repository** you created for the tooling website.
+      - In the repository, click on **Settings** > **Webhooks** > **Add webhook**.
+      - Paste the Jenkins webhook URL in the **Payload URL** field (e.g., `http://<your-jenkins-server>:8080/github-webhook/`).
+      - Set **Content type** to `application/json`.
+      - In the **Which events would you like to trigger this webhook?** section, select "Just the push event".
+      - Click **Add Webhook**.
+
+   4. **Test the Webhook:**
+      - Make a change to the repository (e.g., update a file and push it to GitHub).
+      - This should trigger a build job in Jenkins, and you should see the automation process being carried out in Jenkins.
+
+By setting up the GitHub webhook with Jenkins, any changes made to the tooling website's code will automatically trigger Jenkins jobs for deployment or any other predefined actions, streamlining the Continuous Integration (CI) process.
 
 
 
