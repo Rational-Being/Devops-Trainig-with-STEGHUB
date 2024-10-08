@@ -65,110 +65,115 @@ To test the Nginx load balancer, follow these steps:
    ```
 
 
-
-
 # Part 2: Register a New Domain Name and Configure Secured Connection using SSL/TLS Certificates
 
-## Step 1: Register a New Domain Name
+### Configuring Nginx and Securing Your Domain with SSL/TLS
 
-1. Register a new domain name with a registrar.
-2. Verify domain name registration.
+Update your Nginx configuration to recognize your domain, securing the website with Let's Encrypt SSL/TLS certificates, and setting up automated certificate renewal.
 
-## Step 2: Install Certbot
 
-1. Install Certbot on the server.
-2. Verify Certbot installation.
+## Step 1: Update Nginx Configuration for Your Domain
 
-## Step 3: Obtain SSL/TLS Certificate from Let's Encrypt
+1. Open your Nginx configuration file (`nginx.conf`) or the relevant server block file.
+   ```bash
+   sudo nano /etc/nginx/nginx.conf
+   ```
+2. Update the `server_name` directive to reflect your domain:
+   ```nginx
+   server_name www.<your-domain-name.com>;
+   ```
+   Replace `<your-domain-name.com>` with your actual domain name.
 
-1. Use Certbot to obtain an SSL/TLS certificate from Let's Encrypt.
-2. Verify certificate issuance.
-
-## Step 4: Configure Nginx to use SSL/TLS Certificate
-
-1. Update Nginx configuration to use the obtained SSL/TLS certificate.
-2. Verify that Nginx is serving the website over HTTPS.
-
-## Step 5: Test Secured Connection
-
-1. Verify that the website is accessible over HTTPS.
-2. Test SSL/TLS certificate validity and configuration.
+3. Save and exit the file, then reload Nginx to apply the changes:
+   ```bash
+   sudo systemctl reload nginx
+   ```
 
 ---
 
-# III. Part 2: Register a New Domain Name and Configure Secured Connection using SSL/TLS Certificates
+## Step 2: Install Certbot and Request an SSL/TLS Certificate
 
-## Step 1: Register a New Domain Name
+### 2.1 Ensure `snapd` is Active
 
-To register a new domain name, follow these steps:
+Certbot can be installed using Snap. First, ensure that the `snapd` service is running:
+```bash
+sudo systemctl status snapd
+```
 
-1. Go to a domain registrar (e.g., GoDaddy, Namecheap) and register a new domain name.
-2. Verify domain name registration by checking the domain registrar's control panel or using a WHOIS lookup tool.
+If `snapd` is not installed, you can install it using:
+```bash
+sudo apt update
+sudo apt install snapd
+```
 
-## Step 2: Install Certbot
+### 2.2 Install Certbot
 
-To install Certbot on the server, follow these steps:
+Once `snapd` is active, install Certbot:
+```bash
+sudo snap install --classic certbot
+```
 
-1. Install Certbot:
+Create a symbolic link to ensure Certbot can be run from the command line:
+```bash
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+```
+
+### 2.3 Request Your SSL/TLS Certificate
+
+1. Run Certbot to automatically configure Nginx with SSL/TLS:
    ```bash
-   sudo apt install certbot
+   sudo certbot --nginx
    ```
-2. Verify Certbot installation:
+2. Follow the on-screen instructions to select the domain you want the certificate issued for. Certbot will look up the domain name from your Nginx configuration file (updated in **Step 1**).
+
+3. Once the process is complete, Certbot will configure Nginx to use the issued certificate and reload the service.
+
+---
+
+## Step 3: Test Secured Access to Your Website
+
+After obtaining the SSL/TLS certificate, test access to your website over HTTPS:
+
+1. Open your browser and visit:
    ```bash
-   certbot --version
+   https://<your-domain-name.com>
    ```
 
-## Step 3: Obtain SSL/TLS Certificate from Let's Encrypt
+2. You should see a **padlock** icon in the browser’s address bar, indicating that the connection is secured with SSL/TLS.
 
-To obtain an SSL/TLS certificate from Let's Encrypt using Certbot, follow these steps:
+3. Click on the padlock to view details about the certificate issued to your site, including the issuer (Let's Encrypt) and expiration date.
 
-1. Run the following command to obtain an SSL/TLS certificate:
+---
+
+## Step 4: Set Up Automatic SSL/TLS Certificate Renewal
+
+### 4.1 Test Certificate Renewal in Dry Run Mode
+
+Let's Encrypt certificates are valid for 90 days. To avoid downtime, it’s essential to renew the certificate regularly. You can test the renewal process with Certbot’s `--dry-run` option:
+```bash
+sudo certbot renew --dry-run
+```
+
+### 4.2 Schedule Automatic Renewal Using Cron
+
+To automatically renew the certificate, set up a cron job that runs twice a day:
+
+1. Open the crontab editor:
    ```bash
-   sudo certbot certonly --webroot --webroot-path=/var/www/html --email your_email@example.com --agree-tos --non-interactive --expand --domains -d example.com,www.example.com
+   sudo crontab -e
    ```
-2. Verify certificate issuance:
+
+2. Add the following line to schedule renewal every 12 hours:
    ```bash
-   sudo certbot certificates
+   0 */12 * * * /usr/bin/certbot renew > /dev/null 2>&1
    ```
 
-## Step 4: Configure Nginx to use SSL/TLS Certificate
+   - This cron job will attempt to renew the certificate twice a day.
+   - You can adjust the schedule expression as needed.
 
-To configure Nginx to use the obtained SSL/TLS certificate, follow these steps:
+### 4.3 Verify Cron Job
 
-1. Update the Nginx configuration file:
-   ```bash
-   sudo nano /etc/nginx/conf.d/load_balancer.conf
-   ```
-2. Add the following configuration:
-   ```nginx
-   server {
-
-       listen 443 ssl;
-
-       server_name example.com www.example.com;
-
-       ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
-
-       ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
-
-       ...
-
-   }
-   ```
-
-This configuration enables SSL/TLS encryption on port 443 and specifies the SSL/TLS certificate and private key files obtained from Let's Encrypt.
-
-3. Verify that Nginx is serving the website over HTTPS:
-   ```bash
-   curl https://example.com
-   ```
-
-## Step 5: Test Secured Connection
-
-To test the secured connection, follow these steps:
-
-1. Verify that the website is accessible over HTTPS:
-   ```bash
-   curl https://example.com
-   ```
-2. Test SSL/TLS certificate validity and configuration using tools like SSL Labs or Why No HTTPS.
+After saving, verify the cron job is working by checking the system logs or running the command manually:
+```bash
+sudo certbot renew
+```
