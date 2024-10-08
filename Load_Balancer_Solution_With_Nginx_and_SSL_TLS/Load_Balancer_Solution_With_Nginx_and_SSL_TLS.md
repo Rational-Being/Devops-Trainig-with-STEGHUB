@@ -69,6 +69,17 @@ To test the Nginx load balancer, follow these steps:
 
 # Part 2: Register a New Domain Name and Configure Secured Connection using SSL/TLS Certificates
 
+
+1. Register a new domain name with a registrar, in my case, I have registered with https://get.tech/
+2. Verify domain name registration.
+   
+ ![04 whois](https://github.com/user-attachments/assets/2f751368-e5c2-4f91-a07e-fda42018615d)
+
+3. Update A record in your registrar to point to Nginx LB
+
+![05 A record](https://github.com/user-attachments/assets/7996238b-0783-428a-855f-093047fa549f)
+
+   
 ### Configuring Nginx and Securing Your Domain with SSL/TLS
 
 Update your Nginx configuration to recognize your domain, securing the website with Let's Encrypt SSL/TLS certificates, and setting up automated certificate renewal.
@@ -78,13 +89,17 @@ Update your Nginx configuration to recognize your domain, securing the website w
 
 1. Open your Nginx configuration file (`nginx.conf`) or the relevant server block file.
    ```bash
-   sudo nano /etc/nginx/nginx.conf
+   sudo vim /etc/nginx/nginx.conf
    ```
+   
 2. Update the `server_name` directive to reflect your domain:
    ```nginx
    server_name www.<your-domain-name.com>;
    ```
    Replace `<your-domain-name.com>` with your actual domain name.
+
+![06 update sever name](https://github.com/user-attachments/assets/5538324c-a133-42c1-a6fc-75a734e828b4)
+
 
 3. Save and exit the file, then reload Nginx to apply the changes:
    ```bash
@@ -126,7 +141,7 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
    ```bash
    sudo certbot --nginx
    ```
-2. Follow the on-screen instructions to select the domain you want the certificate issued for. Certbot will look up the domain name from your Nginx configuration file (updated in **Step 1**).
+2. Follow the on-screen instructions to select the domain you want the certificate issued for. Certbot will look up the domain name from your Nginx configuration file (updated in **Step 1** above).
 
 3. Once the process is complete, Certbot will configure Nginx to use the issued certificate and reload the service.
 
