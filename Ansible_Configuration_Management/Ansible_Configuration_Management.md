@@ -236,3 +236,28 @@ Commit your code to GitHub:
 7. Head back to your terminal, checkout from the feature branch into the master, and pull down the latest changes.
 
 Once your code changes appear in the master branch, Jenkins will do its job and save all the files (build artifacts) to `/var/lib/jenkins/jobs/ansible/builds/<build_number>/archive/` directory on the Jenkins-Ansible server.
+
+
+### **Step 7 - Run the first Ansible test**
+
+Now, it is time to execute the `ansible-playbook` command and verify if your playbook actually works:
+
+1. **Set up your VSCode to connect to your instance**. Now run your playbook using the command:
+
+   ```bash
+   cd ansible-config-mgt
+   ansible-playbook -i inventory/dev.yml playbooks/common.yml
+   ```
+
+2. **Run the playbook again** to ensure consistency:
+
+   ```bash
+   ansible-playbook -i inventory/dev.yml playbooks/common.yml
+   ```
+
+**Note:** Make sure you're in your `ansible-config-mgt` directory before you run the above command.
+
+You can go to each of the servers and check if Wireshark has been installed by running `which wireshark` or `wireshark --version`.
+
+![10 wireshark](https://github.com/user-attachments/assets/5bcc1c15-2ff4-4697-ad12-4f22acedef8e)
+
