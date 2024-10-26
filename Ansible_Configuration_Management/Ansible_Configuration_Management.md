@@ -110,6 +110,37 @@
      ```
    - Here, two groups (`webservers` and `dbservers`) are defined, each containing different servers.
 
+Here is the information you provided:
+
+---
+
+**Step 4 - Set up an Ansible Inventory**
+
+An Ansible inventory file defines the hosts and groups of hosts upon which commands, modules, and tasks in a playbook operate. Since our intention is to execute Linux commands on remote hosts and ensure that it is the intended configuration on a particular server that occurs, it is important to have a way to organize our hosts in such an inventory.
+
+Save the below inventory structure in the `inventory/dev` file to start configuring your development servers. Ensure to replace the IP addresses according to your own setup.
+
+**Note:** Ansible uses TCP port 22 by default, which means it needs to SSH into target servers from the Jenkins-Ansible host. For this, you can implement the concept of `ssh-agent`. Now, you need to import your key into `ssh-agent`:
+
+```bash
+eval `ssh-agent -s`
+ssh-add <path-to-private-key>
+```
+
+Confirm the key has been added with the command below; you should see the name of your key:
+
+```bash
+ssh-add -l
+```
+
+Now, SSH into your Jenkins-Ansible server using `ssh-agent`:
+
+```bash
+ssh -A ubuntu@public-ip
+```
+
+--- 
+
 
 
 
