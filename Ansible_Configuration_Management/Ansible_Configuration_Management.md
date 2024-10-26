@@ -1,4 +1,4 @@
-### Learn Ansible Configuration Management and declarative programming with YAML.
+# Learn Ansible Configuration Management and declarative programming with YAML.
 
 ### Introduction: Ansible Client as a Jump Server (Bastion Host)
 - **Jump Server/Bastion Host:** Acts as an intermediary to secure access to internal networks, protecting servers from direct exposure to the Internet. It enhances security by limiting SSH access to the servers through this intermediary.
@@ -64,6 +64,8 @@
 
 2. Checkout the newly created feature branch to your local machine and start building your code and directory structure.
 
+![05 checkout](https://github.com/user-attachments/assets/f22014cb-c992-404f-b36a-100c0a7fe950)
+
 3. Create a directory and name it `playbooks`—it will be used to store all your playbook files.
 
 4. Create a directory and name it `inventory`—it will be used to keep your hosts organized.
@@ -71,4 +73,47 @@
 5. Within the `playbooks` folder, create your first playbook, and name it `common.yml`.
 
 6. Within the `inventory` folder, create an inventory file for each environment (Development, Staging, Testing, and Production): `dev`, `staging`, `uat`, and `prod` respectively. These inventory files use `.ini` style syntax to configure Ansible hosts.
+
+![06 vs code](https://github.com/user-attachments/assets/7b1cd49b-f36c-4193-afe5-4751342a3047)
+
+### Understanding Ansible Inventory Files
+
+1. **Basic Structure**
+   - Inventory files in Ansible are divided into groups of servers (hosts). Each group is defined by a name enclosed in square brackets, followed by a list of servers belonging to that group.
+
+2. **Group Definition**
+   - A group is a collection of servers that you want to manage together. The group name is written inside square brackets `[ ]`.
+   - For example:
+     ```ini
+     [webservers]
+     ```
+     This defines a group named `webservers`.
+
+3. **Adding Hosts to a Group**
+   - After defining a group, you list the servers (hosts) that belong to that group. Each server can be defined by its hostname or IP address.
+   - Optionally, you can use variables like `ansible_host` to specify the IP address of the server.
+   - For example:
+     ```ini
+     [webservers]
+     webserver1 ansible_host=192.168.1.10
+     webserver2 ansible_host=192.168.1.11
+     ```
+   - In this case, `webserver1` and `webserver2` are hostnames, and their corresponding IP addresses are specified using `ansible_host`.
+
+4. **Grouping Multiple Servers**
+   - You can create multiple groups within the same inventory file to organize different types of servers.
+   - For example:
+     ```ini
+     [webservers]
+     webserver1 ansible_host=192.168.1.10
+     webserver2 ansible_host=192.168.1.11
+
+     [dbservers]
+     dbserver1 ansible_host=192.168.1.12
+     dbserver2 ansible_host=192.168.1.13
+     ```
+   - Here, two groups (`webservers` and `dbservers`) are defined, each containing different servers.
+
+
+
 
