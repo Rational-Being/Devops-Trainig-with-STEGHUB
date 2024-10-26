@@ -227,8 +227,12 @@ Commit your code to GitHub:
    ```
 
 2. Create a Pull Request (PR).
-3. Wear the hat of another developer for a second and act as a reviewer.
-4. If the reviewer is happy with your new feature development, merge the code into the master branch.
-5. Head back to your terminal, checkout from the feature branch into the master, and pull down the latest changes.
+   ![08 compare pull request](https://github.com/user-attachments/assets/e1628d18-ce9f-407e-9e11-fe580fe720ef)
+
+4. Wear the hat of another developer for a second and act as a reviewer.
+5. If the reviewer is happy with your new feature development, merge the code into the master branch.
+   ![09 merge](https://github.com/user-attachments/assets/ff408942-d1c0-408e-9af8-220be59d632e)
+
+7. Head back to your terminal, checkout from the feature branch into the master, and pull down the latest changes.
 
 Once your code changes appear in the master branch, Jenkins will do its job and save all the files (build artifacts) to `/var/lib/jenkins/jobs/ansible/builds/<build_number>/archive/` directory on the Jenkins-Ansible server.
