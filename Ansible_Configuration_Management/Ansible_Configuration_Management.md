@@ -110,11 +110,8 @@
      ```
    - Here, two groups (`webservers` and `dbservers`) are defined, each containing different servers.
 
-Here is the information you provided:
 
----
-
-**Step 4 - Set up an Ansible Inventory**
+### **Step 4 - Set up an Ansible Inventory**
 
 An Ansible inventory file defines the hosts and groups of hosts upon which commands, modules, and tasks in a playbook operate. Since our intention is to execute Linux commands on remote hosts and ensure that it is the intended configuration on a particular server that occurs, it is important to have a way to organize our hosts in such an inventory.
 
@@ -139,8 +136,99 @@ Now, SSH into your Jenkins-Ansible server using `ssh-agent`:
 ssh -A ubuntu@public-ip
 ```
 
---- 
+### **Step 5 - Create a Common Playbook**
+
+It is time to start giving Ansible the instructions on what you need to be performed on all servers listed in `inventory/dev`.
+
+In `common.yml` playbook, you will write configuration for repeatable, reusable, and multi-machine tasks that are common to systems within the infrastructure.
+
+Update your `playbooks/common.yml` file with the following code:
+
+```yaml
+---
+- name: update web, nfs and db servers
+  hosts: webservers, nfs, db
+  become: yes
+  tasks:
+    - name: ensure wireshark is at the latest version
+      yum:
+        name: wireshark
+        state: latest
+
+    - name: create a directory
+      file:
+        path: /home/ansible
+        state: directory
+        mode: '0755'
+
+    - name: create a file inside the directory
+      copy:
+        content: "This is a test file for Ansible playbook tasks.\n"
+        dest: /home/ansible/test.txt
+
+    - name: change timezone to UTC
+      command: timedatectl set-timezone UTC
+
+    - name: run a shell script
+      shell: |
+        echo "Hurray!!! I am writing an Ansible Play book" > /home/ansible/output.txt
+        date >> /home/ansible/output.txt
+
+- name: update LB server
+  hosts: lb
+  become: yes
+  tasks:
+    - name: Update apt repo
+      apt: 
+        update_cache: yes
+
+    - name: ensure wireshark is at the latest version
+      apt:
+        name: wireshark
+        state: latest
+
+    - name: create a directory
+      file:
+        path: /home/ansible
+        state: directory
+        mode: '0755'
+
+    - name: create a file inside the directory
+      copy:
+        content: "This is a test file for Ansible playbook tasks.\n"
+        dest: /home/ansible/test.txt
+
+    - name: change timezone to UTC
+      command: timedatectl set-timezone UTC
+
+    - name: run a shell script
+      shell: |
+        echo "Hurray!!! I am writing an Ansible Play book" > /home/ansible/output.txt
+        date >> /home/ansible/output.txt
+
+```
+
+![07 update common](https://github.com/user-attachments/assets/b54470fb-494a-4c65-aa08-278f5885e6fc)
 
 
+### **Step 6 - Update GIT with the Latest Code**
 
+Now all of your directories and files live on your machine, and you need to push changes made locally to GitHub.
 
+Now that you have a separate branch, you need to raise a Pull Request (PR), get your branch peer-reviewed, and merged into the master branch.
+
+Commit your code to GitHub:
+
+1. Use Git commands to add, commit, and push your branch to GitHub.
+   ```bash
+   git status
+   git add <selected files>
+   git commit -m "commit message"
+   ```
+
+2. Create a Pull Request (PR).
+3. Wear the hat of another developer for a second and act as a reviewer.
+4. If the reviewer is happy with your new feature development, merge the code into the master branch.
+5. Head back to your terminal, checkout from the feature branch into the master, and pull down the latest changes.
+
+Once your code changes appear in the master branch, Jenkins will do its job and save all the files (build artifacts) to `/var/lib/jenkins/jobs/ansible/builds/<build_number>/archive/` directory on the Jenkins-Ansible server.
