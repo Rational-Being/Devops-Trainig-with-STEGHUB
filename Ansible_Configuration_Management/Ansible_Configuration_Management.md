@@ -3,8 +3,6 @@
 ### Introduction: Ansible Client as a Jump Server (Bastion Host)
 - **Jump Server/Bastion Host:** Acts as an intermediary to secure access to internal networks, protecting servers from direct exposure to the Internet. It enhances security by limiting SSH access to the servers through this intermediary.
 
----
-
 ### Step 1 - Install and Configure Ansible on an EC2 Instance
 1. **Prepare the EC2 Instance:**
    - Update the name tag of the Jenkins EC2 instance to `Jenkins-Ansible`.
@@ -41,8 +39,6 @@
      /var/lib/jenkins/jobs/ansible/builds/<build_number>/archive/
      ```
    - Only trigger the build for changes in the main/master branch.
-
----
 
 ### Step 2 - Set Up Development Environment with Visual Studio Code
 1. **Install an IDE:**
