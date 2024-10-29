@@ -61,3 +61,78 @@ Next, create a Freestyle project named `save_artifacts` to store artifacts from 
 Once the Jenkins pipeline completes, both jobs (`ansible` and `save_artifacts`) should run in sequence. Check `/home/ubuntu/ansible-config-artifact` to confirm that it contains the updated artifacts.
 
 With this enhancement, your Jenkins pipeline is now more organized and resource-efficient, consolidating artifacts in a central directory for streamlined management.
+
+---
+
+### Step 2 - Refactor Ansible Code by Importing Other Playbooks into `site.yml`
+
+Let’s see code re-use in action by importing other playbooks.
+
+1. Within the `playbooks` folder, create a new file named `site.yml`. This file will now be considered an entry point into the entire infrastructure configuration. Other playbooks will be included here as references. In other words, `site.yml` will become a parent to all other playbooks, including `common.yml`, that you previously created. *(More on this structure will become clear soon)*.
+   
+2. Create a new folder in the root of the repository and name it `static-assignments`. This folder will hold all child playbooks, simply for organizational purposes. *(This is not an Ansible-specific concept, so you can adapt it as needed. The “static” prefix will become relevant shortly.)*
+   
+3. Move the `common.yml` file into the newly created `static-assignments` folder.
+
+4. Inside `site.yml`, import the `common.yml` playbook:
+
+   ```yaml
+   ---
+   - hosts: all
+   - import_playbook: ../static-assignments/common.yml
+
+   ```
+
+   The code above uses the built-in `import_playbook` Ansible module.
+
+5. Run the `ansible-playbook` command against the dev environment.
+
+Since you need to apply some tasks to your dev servers and Wireshark is already installed, go ahead and create another playbook under `static-assignments`, named `common-del.yml`. In this playbook, configure the deletion of the Wireshark utility.
+
+   ```yaml
+   ---
+   - name: update web, nfs, and db servers
+     hosts: webservers, nfs, db
+     remote_user: ec2-user
+     become: yes
+     become_user: root
+     tasks:
+       - name: delete wireshark
+         yum:
+           name: wireshark
+           state: removed
+
+   - name: update LB server
+     hosts: lb
+     remote_user: ubuntu
+     become: yes
+     become_user: root
+     tasks:
+       - name: delete wireshark
+         apt:
+           name: wireshark-qt
+           state: absent
+           autoremove: yes
+           purge: yes
+           autoclean: yes
+   ```
+
+6. Update `site.yml` with:
+
+   ```yaml
+   - import_playbook: ../static-assignments/common-del.yml
+   ```
+
+   Then run it against the dev servers:
+
+   ```bash
+   cd /home/ubuntu/ansible-config-mgt/
+   ansible-playbook -i inventory/dev.yml playbooks/site.yaml
+   ```
+
+7. Confirm that Wireshark is deleted on all servers by running:
+
+   ```bash
+   wireshark --version
+   ```
+```
