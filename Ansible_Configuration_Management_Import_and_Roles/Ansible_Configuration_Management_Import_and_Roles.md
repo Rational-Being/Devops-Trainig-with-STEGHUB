@@ -137,6 +137,8 @@ Since you need to apply some tasks to your dev servers and Wireshark is already 
    ```yaml
    - import_playbook: ../static-assignments/common-del.yml
    ```
+   
+![07 fiel structure](https://github.com/user-attachments/assets/3c64f1ae-32ed-4174-9b86-609aa20b83c5)
 
    Then run it against the dev servers:
 
@@ -170,6 +172,8 @@ We have our nice and clean dev environment, so let us put it aside and configure
      cd roles
      ansible-galaxy init webserver
      ```
+     
+![08 role](https://github.com/user-attachments/assets/efa7d8fb-a02c-43ab-b94d-b32c5ea72aae)
 
 3. The complete folder structure should resemble the following [https://github.com/Rational-Being/ansible-config-mgt]. If you create it manually, you can skip creating `tests`, `files`, and `vars` directories or remove them if you used `ansible-galaxy`.
 
