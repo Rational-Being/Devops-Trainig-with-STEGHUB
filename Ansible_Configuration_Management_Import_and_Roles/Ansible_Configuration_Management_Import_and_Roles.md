@@ -147,11 +147,17 @@ Since you need to apply some tasks to your dev servers and Wireshark is already 
    ansible-playbook -i inventory/dev.yml playbooks/site.yaml
    ```
 
+![01 nfs success](https://github.com/user-attachments/assets/6f14f305-e77f-4456-a724-690a73641c8a)
+
+
 7. Confirm that Wireshark is deleted on all servers by running:
 
    ```bash
    wireshark --version
    ```
+
+   ![03 wireshark](https://github.com/user-attachments/assets/b0a7a510-e001-4770-95fc-c33fe4bbb906)
+
 
 ### Step 3 - Configure UAT Webservers with a Role 'Webserver'
 
@@ -255,4 +261,9 @@ We have our nice and clean dev environment, so let us put it aside and configure
        path: /var/www/html/html
        state: absent
    ```
-```
+
+![002 ansibel fia](https://github.com/user-attachments/assets/0ba1cfdf-efab-471e-bc08-2f12cee9980c)
+
+
+![02 ansibile tun](https://github.com/user-attachments/assets/99f6b251-54cd-42ca-9ae0-86dae45e6f58)
+
