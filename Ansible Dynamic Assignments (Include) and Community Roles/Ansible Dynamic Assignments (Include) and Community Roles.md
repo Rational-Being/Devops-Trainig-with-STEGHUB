@@ -27,10 +27,14 @@ Take note that in most cases, it is recommended to use static assignments for pl
 
 In your https://github.com/<your-name>/ansible-config-mgt GitHub repository start a new branch and call it `dynamic-assignments`.
 
+![01 new branch](https://github.com/user-attachments/assets/f1a34d11-b7e9-4d96-9377-d93cbe9c0b96)
+
 Create a new folder, name it `dynamic-assignments`. Then inside this folder, create a new file and name it `env-vars.yml`. We will instruct `site.yml` to include this playbook later. For now, let us keep building up the structure.
 
-Your GitHub shall have following structure by now.
+![02 create directories](https://github.com/user-attachments/assets/edfe7422-f8d3-4f81-a191-0e38ed676985)
 
+Your GitHub shall have following structure by now.
+```
 ├── dynamic-assignments  
 │   └── env-vars.yml  
 ├── inventory  
@@ -44,13 +48,16 @@ Your GitHub shall have following structure by now.
 │   └──...(optional subfolders & files)  
 └── static-assignments  
 │   └── common.yml  
+```
 
 Since we will be using the same Ansible to configure multiple environments, and each of these environments will have certain unique attributes, such as servername, ip-address etc., we will need a way to set values to variables per specific environment.
 
 For this reason, we will now create a folder to keep each environment's variables file. Therefore, create a new folder env-vars, then for each environment, create new YAML files which we will use to set variables.
 
-Your layout should now look like this.
+![03 crete env direc](https://github.com/user-attachments/assets/60d334f4-51e3-4cc2-a48b-e087b692347d)
 
+Your layout should now look like this.
+```
 ├── dynamic-assignments  
 │   └── env-vars.yml  
 ├── env-vars  
@@ -68,6 +75,7 @@ Your layout should now look like this.
 └── static-assignments  
 │   └── common.yml  
 │   └── webservers.yml  
+```
 
 Now paste the instruction below into the env-vars.yml file.
 
@@ -132,9 +140,6 @@ Now it is time to create a role for MySQL database - it should install the MySQL
 You can browse available community roles [here](https://galaxy.ansible.com).  
 We will be using a MySQL role developed by `geerlingguy`.  
 
-**Hint:**  
-To preserve your GitHub in its actual state after you install a new role, make a commit and push to master your 'ansible-config-mgt' directory. Of course, you must have `git` installed and configured on your Jenkins-Ansible server. For more convenient work with codes, you can configure Visual Studio Code to work with this directory. In this case, you will no longer need a webhook and Jenkins jobs to update your codes on the Jenkins-Ansible server, so you can disable them - we will be using Jenkins later for a better purpose.
-
 On Jenkins-Ansible server, make sure that `git` is installed with `git --version`, then go to the 'ansible-config-mgt' directory and run:
 
 ```bash
@@ -150,6 +155,7 @@ Inside the roles directory, create your new MySQL role with:
 ```bash
 ansible-galaxy install geerlingguy.mysql
 ```
+![04 ansible galxy mysql](https://github.com/user-attachments/assets/c4783580-bb79-4a3f-bd60-6949ba5ad558)
 
 And rename the folder to `mysql`:
 
@@ -157,7 +163,15 @@ And rename the folder to `mysql`:
 mv geerlingguy.mysql/ mysql
 ```
 
-Read the `README.md` file and edit the role's configuration to use the correct credentials for MySQL required for the tooling website.
+![05 mv geerlingguy](https://github.com/user-attachments/assets/5636ef7c-df68-4a99-8fe1-6bef354b6edc)
+
+**Read the `README.md` file and edit the role's configuration to use the correct credentials for MySQL required for the tooling website.**
+
+![06 edit greenguy](https://github.com/user-attachments/assets/f77f3479-ccc3-4ab3-a675-52333e33d2fa)
+
+
+![07 edit geerguy](https://github.com/user-attachments/assets/6e16767a-4e20-407e-b0dd-d08bc3422da9)
+
 
 Now it is time to upload the changes into your GitHub:
 
@@ -166,6 +180,12 @@ git add .
 git commit -m "Commit new role files into GitHub"
 git push --set-upstream origin roles-feature
 ```
+
+![08 git add mysql](https://github.com/user-attachments/assets/ddd1b8bb-ba94-4819-9ff8-4737d5f82632)
+
+![09 git add 2](https://github.com/user-attachments/assets/71169349-7492-46dc-97c3-97b38ef04334)
+
+![10 pull merge](https://github.com/user-attachments/assets/78ff50e4-b3cd-4238-81f7-34aa5d36b13f)
 
 Now, if you are satisfied with your codes, you can create a Pull Request and merge it to the `main` branch on GitHub.
 
