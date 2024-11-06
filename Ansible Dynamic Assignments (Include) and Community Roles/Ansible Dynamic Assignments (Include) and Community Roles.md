@@ -223,6 +223,22 @@ We want to be able to choose which Load Balancer to use, Nginx or Apache, so we 
      ```
    - Add the necessary tasks to set up Apache as a load balancer in `apache/tasks/main.yml`.
 
+
+### Step 1: ALTERNATIVE (Using community Roles)
+1. **Nginx Role**:
+   - Inside your roles directory, create an `nginx` role:
+     ```bash
+     ansible-galaxy role install geerlingguy.nginx
+     ```
+   - Edit role configuration
+2. **Apache Role**:
+   - Inside your roles directory, create an `apache` role:
+     ```bash
+    ansible-galaxy role install geerlingguy.apache
+     ```
+   - Edit role configuration
+
+
 ### Step 2: Configure `loadbalancers.yml` Playbook
 This playbook will apply either the Nginx or Apache load balancer role based on the condition set by environment variables.
 
