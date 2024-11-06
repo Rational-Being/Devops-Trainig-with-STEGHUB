@@ -203,7 +203,13 @@ We want to be able to choose which Load Balancer to use, Nginx or Apache, so we 
    - Inside your roles directory, create an `nginx` role:
      ```bash
      ansible-galaxy init nginx
+     OR
+     ansible-galaxy role install geerlingguy.nginx
      ```
+   - Edit role configuration
+  
+   ![12 nginx role](https://github.com/user-attachments/assets/8e44c8fa-e389-4f2a-813b-a355fb164607)
+
    - In `nginx/defaults/main.yml`, add the following variables:
      ```yaml
      enable_nginx_lb: false
@@ -215,7 +221,13 @@ We want to be able to choose which Load Balancer to use, Nginx or Apache, so we 
    - Similarly, create an `apache` role:
      ```bash
      ansible-galaxy init apache
+     OR
+     ansible-galaxy role install geerlingguy.apache
      ```
+   - Edit role configuration
+
+![11 apche role](https://github.com/user-attachments/assets/83da8f65-03af-4380-92d8-de8be183b126)
+
    - In `apache/defaults/main.yml`, add these variables:
      ```yaml
      enable_apache_lb: false
@@ -223,21 +235,7 @@ We want to be able to choose which Load Balancer to use, Nginx or Apache, so we 
      ```
    - Add the necessary tasks to set up Apache as a load balancer in `apache/tasks/main.yml`.
 
-
-### Step 1: ALTERNATIVE (Using community Roles)
-1. **Nginx Role**:
-   - Inside your roles directory, create an `nginx` role:
-     ```bash
-     ansible-galaxy role install geerlingguy.nginx
-     ```
-   - Edit role configuration
-2. **Apache Role**:
-   - Inside your roles directory, create an `apache` role:
-     ```bash
-    ansible-galaxy role install geerlingguy.apache
-     ```
-   - Edit role configuration
-
+![13 edit playbook and env](https://github.com/user-attachments/assets/69ea8ab3-e5d9-4940-9b6a-3087ebf02aff)
 
 ### Step 2: Configure `loadbalancers.yml` Playbook
 This playbook will apply either the Nginx or Apache load balancer role based on the condition set by environment variables.
