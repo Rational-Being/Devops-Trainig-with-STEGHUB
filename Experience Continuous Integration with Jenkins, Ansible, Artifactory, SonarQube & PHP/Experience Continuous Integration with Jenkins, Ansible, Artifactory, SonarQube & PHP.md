@@ -40,7 +40,7 @@ What we want to achieve, is having Nginx to serve as a reverse proxy for our sit
 Create a directory structure that separates inventory files for each environment.
 
 ```bash
-touch ansible/inventory/{ci,dev,pentest,pre-prod,prod,sit,uat}
+touch ansible_CI_CD/inventory/{ci,dev,pentest,pre-prod,prod,sit,uat}
 ```
 
 ---
