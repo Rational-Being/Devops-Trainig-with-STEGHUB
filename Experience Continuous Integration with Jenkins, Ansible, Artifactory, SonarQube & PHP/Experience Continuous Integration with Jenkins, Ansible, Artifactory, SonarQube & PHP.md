@@ -108,9 +108,25 @@ pentest-tooling
 
 We have used `pentest:children` above because, we want to have a group called pentest which covers Ansible execution against both pentest-todo and pentest-tooling simultaneously.
  
- 
 
- 
+# Ansible Roles for CI Environment
+
+### Add two more roles to Ansible:
+- **SonarQube**  
+  
+- **Artifactory**
+
+![01 create role](https://github.com/user-attachments/assets/bd513551-14b6-45d7-8737-681ebd32c667)
+
+
+## Why do we need SonarQube?
+
+SonarQube is an open-source platform developed by SonarSource for continuous inspection of code quality. It is used to perform automatic reviews with static analysis of code to detect bugs, code smells, and security vulnerabilities. 
+
+## Why do we need Artifactory?
+
+Artifactory is a product by JFrog that serves as a binary repository manager. The binary repository is a natural extension to the source code repository, in that the outcome of your build process is stored. It can be used for certain other automation, but we will use it strictly to manage our build artifacts.
+
  
  
  
