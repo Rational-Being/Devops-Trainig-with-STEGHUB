@@ -28,7 +28,7 @@ http://cpcalendars.aaronic.com.ng/
 
 ### Port Scanning
 naabu installation: Run this command in your terminal (make sure you have go/golang installed)
-go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest    
+- go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest    
 
 The run the following commmand in yur terminal (make sure you also have nmpa installed):
  - `naabu -p - -host aaronic.com.ng -nmap-cli 'nmap -sV -oX nmap-output'`
@@ -64,7 +64,7 @@ Mitigation: It should taken off the internet for proper protection since we don'
 
 ![image](https://github.com/user-attachments/assets/06d264f5-404f-4057-a732-ecd46dceb04d)
 
-  - https://aaronic.com.ng:2078/ - This port uses **Authorization Bearer** as a means of authentication which is deprecated.
+  - https://aaronic.com.ng:2078/ - This port uses **Authorization Basic** as a means of authentication which is deprecated.
     
   ![image](https://github.com/user-attachments/assets/f7ed1aa6-7f73-4e4e-b415-f19c9c9a3a3e)
 
